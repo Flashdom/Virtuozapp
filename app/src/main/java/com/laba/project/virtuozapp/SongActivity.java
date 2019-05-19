@@ -26,6 +26,9 @@ public class SongActivity extends AppCompatActivity {
         sharp=findViewById(R.id.sharp);
         tv=findViewById(R.id.current_tone);
         tv.setText("0");
+
+
+
         process=findViewById(R.id.process);
         textView.setText(getIntent().getExtras().getString("songname"));
 
@@ -37,6 +40,7 @@ public class SongActivity extends AppCompatActivity {
                 a-=1;
                 s=String.valueOf(a);
                 tv.setText(s);
+
             }
         });
         sharp.setOnClickListener(new View.OnClickListener() {
@@ -52,19 +56,18 @@ public class SongActivity extends AppCompatActivity {
 
 
 
+
         process.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //tv.setText("Hello");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        nc=new NetworkConnector();
+                        nc= new NetworkConnector();
                         nc.send();
+                        nc.receive();
                     }
                 }).start();
-
             }
         });
 
