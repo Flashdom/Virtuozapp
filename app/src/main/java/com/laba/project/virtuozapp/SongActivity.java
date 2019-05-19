@@ -14,12 +14,15 @@ public class SongActivity extends AppCompatActivity {
     Button flat;
     Button sharp;
     NetworkConnector nc;
+    Guids guids;
     Button process;
+    String strings[];
     TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song);
+        guids = new Guids();
         textView=findViewById(R.id.song);
         play=findViewById(R.id.play);
         flat=findViewById(R.id.flat);
@@ -27,7 +30,16 @@ public class SongActivity extends AppCompatActivity {
         tv=findViewById(R.id.current_tone);
         tv.setText("0");
 
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    nc= new NetworkConnector();
+                    nc.getData();
+                   strings=nc.receiveInfo();
+                   assemble();
 
+                }
+            }).start();
 
         process=findViewById(R.id.process);
         textView.setText(getIntent().getExtras().getString("songname"));
@@ -63,14 +75,35 @@ public class SongActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        nc= new NetworkConnector();
-                        nc.send();
-                        nc.receive();
+                        if (textView.getText().toString().equals(guids.wakemeupguid[1]))
+                            nc.send(guids.wakemeupguid[0]);
+                        if (textView.getText().toString().equals(guids.blackorwhiteguid[1]))
+                            nc.send(guids.blackorwhiteguid[0]);
+                        if (textView.getText().toString().equals(guids.sendmeanangelguid[1]))
+                            nc.send(guids.sendmeanangelguid[0]);
+                        if (textView.getText().toString().equals(guids.vihodanetguid[1]))
+                            nc.send(guids.vihodanetguid[0]);
+                        if (textView.getText().toString().equals(guids.etovseguid[1]))
+                            nc.send(guids.etovseguid[0]);
+
                     }
                 }).start();
             }
         });
 
+
+    }
+
+
+    public void assemble()
+    {
+        for(int i=1; i<strings.length-1; i++)
+        {
+            guids.guidsarr[i-1]=strings[i];
+
+
+        }
+        guids.processing();
 
     }
 }
