@@ -24,6 +24,7 @@ public class MusicActivity extends AppCompatActivity implements MyRecyclerViewAd
         animalNames.add("Send me an angel");
         animalNames.add("Это все");
         animalNames.add("Выхода нет");
+        animalNames.add("ДАДАЯ");
         recyclerView = findViewById(R.id.bandsList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyRecyclerViewAdapter(this, animalNames);

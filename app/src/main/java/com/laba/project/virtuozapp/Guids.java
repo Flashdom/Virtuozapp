@@ -3,7 +3,7 @@ package com.laba.project.virtuozapp;
 public class Guids {
 
 
-    public String[] guidsarr=new String[100];
+    public String[] guidsarr=new String[101];
 
 
     public String[] wakemeupguid= new String[10];
@@ -11,6 +11,7 @@ public class Guids {
     public String[] sendmeanangelguid= new String[10];
     public String[] vihodanetguid= new String[10];
     public String[] etovseguid= new String[10];
+    public String[] dadayaguid = new String[10];
 
     public void processing()
     {
@@ -25,6 +26,8 @@ public class Guids {
         vihodanetguid=guidsarr[3].split(";");
         if (guidsarr[4]!= null)
         etovseguid=guidsarr[4].split(";");
+        if (guidsarr[5]!= null)
+            dadayaguid=guidsarr[5].split(";");
 
 
 
