@@ -1,25 +1,19 @@
 package com.laba.project.virtuozapp;
 
 
-import android.net.Uri;
 import android.os.Environment;
-import android.os.Handler;
-
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
 import java.net.Socket;
 
 public class NetworkConnector {
-    private String IPaddress = "192.168.1.229";
+    private String IPaddress = "192.168.43.185";
     private int port = 8005;
     private Socket socket;
     private String text1;
-    private static final String savedRecords= Environment.getExternalStorageDirectory().getPath();
+    private static final String savedRecords = Environment.getExternalStorageDirectory().getPath();
     private DataOutputStream out1;
     private String text2;
     private DataInputStream in1;
@@ -40,8 +34,7 @@ public class NetworkConnector {
         }
     }
 
-    public void getData()
-    {
+    public void getData() {
 
         try {
             out1.writeUTF(s);
@@ -56,7 +49,7 @@ public class NetworkConnector {
             socket = new Socket(IPaddress, port);
             out2 = new DataOutputStream(socket.getOutputStream());
 
-            s1+=";0,1";
+            s1 += ";0,1";
             out2.writeUTF(s1);
             out2.flush();
 
@@ -64,27 +57,22 @@ public class NetworkConnector {
             e.printStackTrace();
         }
     }
-        public byte[] receive()
-        {
+
+    public byte[] receive() {
 
 
-            byte[] datasong = new byte[1000000];
-            try {
-                in2 = new DataInputStream(socket.getInputStream());
-                in2.read(datasong,0,datasong.length);
+        byte[] datasong = new byte[1000000];
+        try {
+            in2 = new DataInputStream(socket.getInputStream());
+            in2.read(datasong, 0, datasong.length);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return datasong;
-
-
-
-
-
-
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return datasong;
+
+
+    }
 
     public String[] receiveInfo() {
         byte[] data = new byte[1000000];

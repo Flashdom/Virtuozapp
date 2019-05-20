@@ -2,4 +2,9 @@
     <string name="app_name">Virtuozapp</string>
     <string name="Lessons">Lessons</string>
     <string name="Music">Music</string>
+    <string name="Lesson1">Lesson1</string>
+    <string name="Lesson2">Lesson2</string>
+    <string name="Lesson3">Lesson3</string>
+    <string name="Lesson4">Lesson4</string>
+    <string name="Lesson5">Lesson5</string>
 </resources>

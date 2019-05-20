@@ -6,28 +6,27 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MusicActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
+public class MusicActivity extends AppCompatActivity implements MyRecyclerViewAdapterForSongs.ItemClickListener {
     RecyclerView recyclerView;
-    MyRecyclerViewAdapter adapter;
+    MyRecyclerViewAdapterForSongs adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Wake me up");
-        animalNames.add("Black or white");
-        animalNames.add("Send me an angel");
-        animalNames.add("Это все");
-        animalNames.add("Выхода нет");
-        animalNames.add("ДАДАЯ");
+        ArrayList<String> songList = new ArrayList<>();
+        songList.add("Wake me up");
+        songList.add("Black or white");
+        songList.add("Send me an angel");
+        songList.add("Это все");
+        songList.add("Выхода нет");
+        songList.add("ДАДАЯ");
         recyclerView = findViewById(R.id.bandsList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyRecyclerViewAdapter(this, animalNames);
+        adapter = new MyRecyclerViewAdapterForSongs(this, songList);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 

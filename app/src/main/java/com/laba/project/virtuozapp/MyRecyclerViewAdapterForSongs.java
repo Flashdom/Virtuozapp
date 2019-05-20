@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>{
+public class MyRecyclerViewAdapterForSongs extends RecyclerView.Adapter<MyRecyclerViewAdapterForSongs.ViewHolder>{
     private List<String> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    MyRecyclerViewAdapter(Context context, List<String> data) {
+    MyRecyclerViewAdapterForSongs(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
