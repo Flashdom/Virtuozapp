@@ -1,5 +1,6 @@
 package com.laba.project.virtuozapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,8 @@ public class LessonsActivity extends AppCompatActivity implements MyRecyclerView
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Intent intent = new Intent(LessonsActivity.this, LessonActivity.class);
+        intent.putExtra("lessonname", adapter.getItem(position));
+        startActivity(intent);
     }
 }

@@ -7,9 +7,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class NetworkConnector {
-    private String IPaddress = "192.168.43.185";
+    private String IPaddress = "192.168.1.229";
     private int port = 8005;
     private Socket socket;
     private String text1;
@@ -62,9 +63,14 @@ public class NetworkConnector {
 
 
         byte[] datasong = new byte[1000000];
+        byte[] datasong2 = new byte[1000000];
         try {
             in2 = new DataInputStream(socket.getInputStream());
             in2.read(datasong, 0, datasong.length);
+            String x= new String(datasong, StandardCharsets.UTF_8);
+            text2="ha";
+
+
 
         } catch (IOException e) {
             e.printStackTrace();

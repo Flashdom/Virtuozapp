@@ -94,7 +94,7 @@ public class SongActivity extends AppCompatActivity {
 
                             try {
                                 // create temp file that will hold byte array
-                                File tempMp3 = File.createTempFile("tmp", "wav", getCacheDir());
+                                File tempMp3 = File.createTempFile("tmp", "mp3", getCacheDir());
                                 tempMp3.deleteOnExit();
                                 FileOutputStream fos = new FileOutputStream(tempMp3);
                                 fos.write(nc.receive());
